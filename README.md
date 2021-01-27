@@ -86,7 +86,7 @@ Delete the file:
 
 `git clone https://github.com/NeverEatYellowSwissSnow/synology-dsm-open-vm-tools.git ~/tmp`
 
-**7.** Edit the following file which holds the according checksum files and replace all values with the generated checksums from `~/tmp.txt`:
+**7.** Edit the following file which holds the according checksum files and replace all values with the previously generated checksums from `~/tmp.txt`:
 
 `nano ~/tmp/spksrc/cross/open-vm-tools/digests`
 
@@ -96,9 +96,13 @@ Save the file and quit the editor.
 
 `nano ~/tmp/spksrc/cross/open-vm-tools/Makefile`
 
+Save the file and quit the editor.
+
 **9.** Edit the following file and customize the value for the variable `SPK_VERS` and, if you want (optional), also for the variables `MAINTAINER` and `CHANGELOG`:
 
 `nano ~/tmp/spksrc/spk/open-vm-tools/Makefile`
+
+Save the file and quit the editor.
 
 **10.** Copy the `open-vm-tools` build files into the original "SynoCommunity" `spksrc` repository:
 
