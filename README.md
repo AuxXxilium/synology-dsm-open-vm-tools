@@ -53,52 +53,101 @@ The release builds provided here were compiled by using an `Ubuntu Desktop 20.04
 If you want to compile `open-vm-tools` for `Synology DSM` by yourself, do the following on a `Ubuntu/Debian` (or similiar) system, according to the following example (`open-vm-tools 11.5.2` and `apollolake/DSM 6.2` architecture):
 
 **1.** Download the desired official [open-vm-tools release](https://github.com/vmware/open-vm-tools/releases/):
+
 `cd ~/Downloads`
+
 `wget https://github.com/vmware/open-vm-tools/releases/tag/stable-11.2.5/open-vm-tools-11.2.5-17337674.tar.gz`
+
 **2.** Push the following three checksums of the downloaded package into a temporary file by executing:
+
 `shasum -a 1 ~/Downloads/open-vm-tools-11.2.5-17337674.tar.gz >> ~/tmp.txt`
+
 `shasum -a 256 ~/Downloads/open-vm-tools-11.2.5-17337674.tar.gz >> ~/tmp.txt`
+
 `md5sum ~/Downloads/open-vm-tools-11.2.5-17337674.tar.gz >> ~/tmp.txt`
+
 Delete the file:
+
 `rm -rf ~/Downloads/open-vm-tools-11.2.5-17337674.tar.gz`
+
 **3.** Install the following packages:
+
 `sudo apt-get install docker.io git nano`
+
 **4.** Clone the official "SynoCommunity" `spksrc` Github repository:
+
 `git clone https://github.com/SynoCommunity/spksrc ~/spksrc`
+
 **5.** Download the official "SynoCommunity" `spksrc` docker image:
+
 `sudo docker pull synocommunity/spksrc`
+
 **6.** Clone the `open-vm-tools` build files:
+
 `git clone https://github.com/NeverEatYellowSwissSnow/synology-dsm-open-vm-tools.git ~/tmp`
+
 **7.** Edit the following file which holds the according checksum files and replace all values with the generated checksums from `~/tmp.txt`:
+
 `nano ~/tmp/spksrc/cross/open-vm-tools/digests`
+
 Save the file and quit the editor.
+
 **8.** Edit the following file and customize the values for the variables `PKG_VERS` and `PKG_BUILD`:
+
 `nano ~/tmp/spksrc/cross/open-vm-tools/Makefile`
+
 **9.** Edit the following file and customize the value for the variable `SPK_VERS` and, if you want (optional), also for the variables `MAINTAINER` and `CHANGELOG`:
+
 `nano ~/tmp/spksrc/spk/open-vm-tools/Makefile`
+
 **10.** Copy the `open-vm-tools` build files into the original "SynoCommunity" `spksrc` repository:
+
 `sudo cp -r ~/tmp/spksrc/ ~/ && rm -rf ~/tmp/spksrc/`
+
 **11.** Run and prepare the `spksrc`docker image:
+
 `sudo docker run -it -v ~/spksrc:/spksrc synocommunity/spksrc /bin/bash`
+
 `make setup`
+
 **12.** Compile:
+
 `cd /spksrc/spk/open-vm-tools/ && make arch-apollolake-6.2`
+
 Sidenote: Other common architectures could be:
+
 `arch-bromolow-6.2`
+
 or
+
 `arch-broadwell-6.2`
+
 or
+
 `arch-x64-6.2`
+
 Note:
+
 If you get the following error:
+
 `mv: cannot stat '/spksrc/spk/open-vm-tools/work-apollolake-6.2/install/var/packages/open-vm-tools/target/etc/vmware-tools/vm-support': No such file or directory`
+
 Simply execute the following command...
+
 `mkdir -p /spksrc/spk/open-vm-tools/work-apollolake-6.2/install/var/packages/open-vm-tools/target/etc/vmware-tools/vm-support`
+
 ...and repeat the `make` command (don't worry, it will continue where it last stopped and does not start from beginning again):
+
 `make arch-apollolake-6.2`
+
 Now quit the docker building environment:
+
 `exit`
+
 You can now find the compiled `.spk`-package here:
+
 `~/spksrc/packages`
+
 **13.** Install the compiled `.spk`-package on your `Synology DSM` system.
+
 Done.
