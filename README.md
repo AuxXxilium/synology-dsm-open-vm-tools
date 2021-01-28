@@ -140,7 +140,7 @@ If you get the following error:
 
 Simply execute the following command...
 
-`mkdir -p /spksrc/spk/open-vm-tools/work-apollolake-6.2/install/var/packages/open-vm-tools/target/etc/vmware-tools/ && touch mkdir -p /spksrc/spk/open-vm-tools/work-apollolake-6.2/install/var/packages/open-vm-tools/target/etc/vmware-tools/vm-support`
+`mkdir -p /spksrc/spk/open-vm-tools/work-apollolake-6.2/install/var/packages/open-vm-tools/target/etc/vmware-tools/ && touch /spksrc/spk/open-vm-tools/work-apollolake-6.2/install/var/packages/open-vm-tools/target/etc/vmware-tools/vm-support`
 
 ...and repeat the `make` command (don't worry, it will continue where it last stopped and does not start from beginning again):
 
