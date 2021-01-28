@@ -45,4 +45,4 @@ vmtools_post_install:
 	chmod a-x $(STAGING_INSTALL_PREFIX)/etc/vmware-tools/*.conf.example
 	# chmod a-x $(STAGING_INSTALL_PREFIX)/etc/vmware-tools/vgauth/schemas/*
 	chmod a-x $(STAGING_INSTALL_PREFIX)/lib/udev/rules.d/99-vmware-scsi-udev.rules
-	mv $(STAGING_INSTALL_PREFIX)/etc/vmware-tools/vm-support $(STAGING_INSTALL_PREFIX)/bin/
+	mv $(STAGING_INSTALL_PREFIX)/usr/bin/vm-support $(STAGING_INSTALL_PREFIX)/bin/
