@@ -36,7 +36,7 @@ open-vm-tools_[Arch]-[DSM ver]_[open-vm-tools ver]-[build].spk
 
 `[build]` is the incremental build number. Get the latest available to benefit from more recent patches built from upstream hotfixes.
 
-For example, to install `open-vm-tools 11.2.5` on a `Synology NAS` model `DS3615xs` (Package Arch: `Bromolow`) running `DSM 6.2`, download a package file named `open-vm-tools_bromolow-6.2_11.2.5-xx.spk` which supports `DSM` versions `6.1` and above.
+For example, to install `open-vm-tools 11.2.5` on a `Synology NAS` model `DS3615xs` (Package Arch: `Bromolow`) running `DSM 6.2`, download a package file named `open-vm-tools_bromolow-6.2_11.2.5-xx.spk` which supports `DSM` versions `6.2` and above.
 
 ## Build Tooling
 
@@ -48,6 +48,8 @@ More information, including instructions to build this and many other projects r
 
 ## Compiling
 
+Note: The `open-vm-tools` source data is not contained in this repository and you will not to have to download it manually as the required data will be downloaded on-the-fly while compiling.
+
 The release builds provided here were compiled by using an `Ubuntu Desktop 20.04 LTS` VM on a `VMware Workstation Player 16` type 2 hypervisor.
 
 If you want to compile `open-vm-tools` for `Synology DSM` by yourself, do the following on a `Ubuntu/Debian` (or similiar) system, according to the following example (`open-vm-tools 11.5.2` and `apollolake/DSM 6.2` architecture):
@@ -58,7 +60,7 @@ If you want to compile `open-vm-tools` for `Synology DSM` by yourself, do the fo
 
 `wget https://github.com/vmware/open-vm-tools/releases/tag/stable-11.2.5/open-vm-tools-11.2.5-17337674.tar.gz`
 
-**2.** Push the following three checksums of the downloaded package into a temporary file by executing:
+**2.** Push the following three checksums of the downloaded package into a temporary file (which we will use later)  by executing:
 
 `shasum -a 1 ~/Downloads/open-vm-tools-11.2.5-17337674.tar.gz >> ~/tmp.txt`
 
@@ -66,7 +68,7 @@ If you want to compile `open-vm-tools` for `Synology DSM` by yourself, do the fo
 
 `md5sum ~/Downloads/open-vm-tools-11.2.5-17337674.tar.gz >> ~/tmp.txt`
 
-Delete the file:
+Delete the `.tar.gz`-file:
 
 `rm -rf ~/Downloads/open-vm-tools-11.2.5-17337674.tar.gz`
 
@@ -92,13 +94,13 @@ Delete the file:
 
 Save the file and quit the editor.
 
-**8.** Edit the following file and customize the values for the variables `PKG_VERS` and `PKG_BUILD`:
+**8.** Edit the following file and customize the values for the variables `PKG_VERS` and `PKG_BUILD` according to the `open-vm-tools` version you want to compile:
 
 `nano ~/tmp/spksrc/cross/open-vm-tools/Makefile`
 
 Save the file and quit the editor.
 
-**9.** Edit the following file and customize the value for the variable `SPK_VERS` and, if you want (optional), also for the variables `MAINTAINER` and `CHANGELOG`:
+**9.** Edit the following file and customize the value for the variable `SPK_VERS` according to the `.spk`-package version you want to generate and, if you want (optional), also for the variables `MAINTAINER` and `CHANGELOG`:
 
 `nano ~/tmp/spksrc/spk/open-vm-tools/Makefile`
 
