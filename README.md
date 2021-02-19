@@ -132,8 +132,6 @@ or
 
 `arch-x64-6.2`
 
-`make arch-apollolake-6.2`
-
 Now quit the docker building environment:
 
 `exit`
