@@ -58,15 +58,19 @@ If you want to compile `open-vm-tools` for `Synology DSM` by yourself, do the fo
 
 `cd ~/Downloads`
 
-`wget https://github.com/vmware/open-vm-tools/releases/tag/stable-11.2.5/open-vm-tools-11.2.5-17337674.tar.gz`
+`wget https://github.com/vmware/open-vm-tools/releases/download/stable-11.2.5/open-vm-tools-11.2.5-17337674.tar.gz`
 
-**2.** Push the following three checksums of the downloaded package into a temporary file (which we will use later)  by executing:
+**2.** Create a temporary working directory...
 
-`shasum -a 1 ~/Downloads/open-vm-tools-11.2.5-17337674.tar.gz >> ~/tmp.txt`
+`mkdir -p ~/tmp/`
 
-`shasum -a 256 ~/Downloads/open-vm-tools-11.2.5-17337674.tar.gz >> ~/tmp.txt`
+...and push the following three checksums of the downloaded package into a `.txt`  file (which we will use later)  by executing:
 
-`md5sum ~/Downloads/open-vm-tools-11.2.5-17337674.tar.gz >> ~/tmp.txt`
+`shasum -a 1 ~/Downloads/open-vm-tools-11.2.5-17337674.tar.gz >> ~/tmp/checksums.txt`
+
+`shasum -a 256 ~/Downloads/open-vm-tools-11.2.5-17337674.tar.gz >> ~/tmp/checksums.txt`
+
+`md5sum ~/Downloads/open-vm-tools-11.2.5-17337674.tar.gz >> ~/tmp/checksums.txt`
 
 Delete the `.tar.gz`-file:
 
@@ -78,7 +82,7 @@ Delete the `.tar.gz`-file:
 
 **4.** Clone the official "SynoCommunity" `spksrc` Github repository:
 
-`git clone https://github.com/SynoCommunity/spksrc ~/spksrc`
+`git clone https://github.com/SynoCommunity/spksrc ~/tmp/spksrc`
 
 **5.** Download the official "SynoCommunity" `spksrc` docker image:
 
@@ -86,33 +90,33 @@ Delete the `.tar.gz`-file:
 
 **6.** Clone the `open-vm-tools` build files:
 
-`git clone https://github.com/NeverEatYellowSwissSnow/synology-dsm-open-vm-tools.git ~/tmp`
+`git clone https://github.com/NeverEatYellowSwissSnow/synology-dsm-open-vm-tools.git ~/tmp/open-vm-tools`
 
-**7.** Edit the following file which holds the according checksum files and replace all values with the previously generated checksums from `~/tmp.txt`:
+**7.** Edit the following file which holds the according checksum files and replace all values with the previously generated checksums from `~/tmp/checksums.txt`:
 
-`nano ~/tmp/spksrc/cross/open-vm-tools/digests`
+`nano ~/tmp/open-vm-tools/cross/open-vm-tools/digests`
 
 Save the file and quit the editor.
 
 **8.** Edit the following file and customize the values for the variables `PKG_VERS` and `PKG_BUILD` according to the `open-vm-tools` version you want to compile:
 
-`nano ~/tmp/spksrc/cross/open-vm-tools/Makefile`
+`nano ~/tmp/open-vm-tools/cross/open-vm-tools/Makefile`
 
 Save the file and quit the editor.
 
 **9.** Edit the following file and customize the value for the variable `SPK_VERS` according to the `.spk`-package version you want to generate and, if you want (optional), also for the variables `MAINTAINER` and `CHANGELOG`:
 
-`nano ~/tmp/spksrc/spk/open-vm-tools/Makefile`
+`nano ~/tmp/open-vm-tools/spk/open-vm-tools/Makefile`
 
 Save the file and quit the editor.
 
 **10.** Copy the `open-vm-tools` build files into the original "SynoCommunity" `spksrc` repository:
 
-`sudo cp -r ~/tmp/spksrc/ ~/ && rm -rf ~/tmp/spksrc/`
+`sudo cp -r ~/tmp/open-vm-tools/* ~/tmp/spksrc/`
 
 **11.** Run and prepare the `spksrc`docker image:
 
-`sudo docker run -it -v ~/spksrc:/spksrc synocommunity/spksrc /bin/bash`
+`sudo docker run -it -v ~/tmp/spksrc:/spksrc synocommunity/spksrc /bin/bash`
 
 `make setup`
 
