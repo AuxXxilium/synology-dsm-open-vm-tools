@@ -142,7 +142,7 @@ Now quit the docker building environment:
 
 You can now find the compiled `.spk`-package here:
 
-`~/spksrc/packages`
+`~/tmp/spksrc/packages`
 
 **13.** Install the compiled `.spk`-package on your `Synology DSM` system.
 
