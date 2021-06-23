@@ -1,6 +1,6 @@
 PKG_NAME = open-vm-tools
-PKG_VERS = 11.2.5
-PKG_BUILD = 17337674
+PKG_VERS = 11.3.0
+PKG_BUILD = 18090558
 PKG_EXT = tar.gz
 PKG_DIST_NAME = $(PKG_NAME)-$(PKG_VERS)-$(PKG_BUILD).$(PKG_EXT)
 PKG_DIST_SITE = https://github.com/vmware/open-vm-tools/releases/download/stable-$(PKG_VERS)
@@ -26,7 +26,7 @@ CONFIGURE_ARGS += --disable-resolutionkms
 CONFIGURE_ARGS += --with-tirpc
 CONFIGURE_ARGS += --without-pam
 CONFIGURE_ARGS += --without-xmlsec1
-CONFIGURE_ARGS += --with-icu
+CONFIGURE_ARGS += --without-icu
 
 include ../../mk/spksrc.cross-cc.mk
 
