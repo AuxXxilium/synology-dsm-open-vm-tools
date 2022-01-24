@@ -90,7 +90,7 @@ Delete the `.tar.gz`-file:
 
 **6.** Clone the `open-vm-tools` build files:
 
-`git clone https://github.com/NeverEatYellowSwissSnow/synology-dsm-open-vm-tools.git ~/tmp/open-vm-tools`
+`git clone https://github.com/perrin-1/synology-dsm-open-vm-tools.git ~/tmp/open-vm-tools`
 
 **7.** Edit the following file which holds the according checksum files and replace all values with the previously generated checksums from `~/tmp/checksums.txt`:
 
@@ -120,17 +120,23 @@ Save the file and quit the editor.
 
 `make setup`
 
-**12.** Compile:
+**12.** Install missing package `sponge`
 
-`cd /spksrc/spk/open-vm-tools/ && make arch-apollolake-6.2`
+The official synocommunity/spksrc docker container is missing the binary sponge. You need to install that for the build to finish:
+`apt update`
+`apt install moreutils`
+
+**13.** Compile:
+
+`cd /spksrc/spk/open-vm-tools/ && make arch-apollolake-7.0`
 
 Sidenote: Other common architectures could be:
 
-`arch-bromolow-6.2`
+`arch-bromolow-6.2` or `arch-bromolow-7.0`
 
 or
 
-`arch-broadwell-6.2`
+`arch-broadwell-6.2` or `arch-broadwell-7.0`
 
 or
 
@@ -144,6 +150,6 @@ You can now find the compiled `.spk`-package here:
 
 `~/tmp/spksrc/packages`
 
-**13.** Install the compiled `.spk`-package on your `Synology DSM` system.
+**14.** Install the compiled `.spk`-package on your `Synology DSM` system.
 
 Done.
