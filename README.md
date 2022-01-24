@@ -120,7 +120,13 @@ Save the file and quit the editor.
 
 `make setup`
 
-**12.** Compile:
+**12.** Install missing package `sponge`
+
+The official synocommunity/spksrc docker container is missing the binary sponge. You need to install that for the build to finish:
+`apt update`
+`apt install moreutils`
+
+**13.** Compile:
 
 `cd /spksrc/spk/open-vm-tools/ && make arch-apollolake-7.0`
 
@@ -144,6 +150,6 @@ You can now find the compiled `.spk`-package here:
 
 `~/tmp/spksrc/packages`
 
-**13.** Install the compiled `.spk`-package on your `Synology DSM` system.
+**14.** Install the compiled `.spk`-package on your `Synology DSM` system.
 
 Done.
