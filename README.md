@@ -122,15 +122,15 @@ Save the file and quit the editor.
 
 **12.** Compile:
 
-`cd /spksrc/spk/open-vm-tools/ && make arch-apollolake-6.2`
+`cd /spksrc/spk/open-vm-tools/ && make arch-apollolake-7.0`
 
 Sidenote: Other common architectures could be:
 
-`arch-bromolow-6.2`
+`arch-bromolow-6.2` or `arch-bromolow-7.0`
 
 or
 
-`arch-broadwell-6.2`
+`arch-broadwell-6.2` or `arch-broadwell-7.0`
 
 or
 
