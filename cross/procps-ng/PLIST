@@ -9,10 +9,7 @@ bin:usr/bin/pgrep
 bin:usr/bin/pkill
 bin:usr/bin/pmap
 bin:usr/bin/pwdx
-bin:usr/bin/slabtop
 bin:usr/bin/tload
-bin:usr/bin/top
 bin:usr/bin/uptime
 bin:usr/bin/vmstat
 bin:usr/bin/w
-bin:usr/bin/watch
