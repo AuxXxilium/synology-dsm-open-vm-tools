@@ -86,7 +86,8 @@ Delete the `.tar.gz`-file:
 
 **5.** Download the official "SynoCommunity" `spksrc` docker image:
 
-`sudo docker pull synocommunity/spksrc`
+`sudo docker pull ghcr.io/synocommunity/spksrc`
+(Note: do not pull `synocommunity/spksrc` as it is missing packages)
 
 **6.** Clone the `open-vm-tools` build files:
 
@@ -117,6 +118,7 @@ Save the file and quit the editor.
 **11.** Run and prepare the `spksrc`docker image:
 
 `sudo docker run -it -v ~/tmp/spksrc:/spksrc synocommunity/spksrc /bin/bash`
+ghcr.io/synocommunity/spksrc
 
 `make setup`
 
@@ -125,6 +127,7 @@ Save the file and quit the editor.
 The official synocommunity/spksrc docker container is missing the binary sponge. You need to install that for the build to finish:
 `apt update`
 `apt install moreutils`
+(there might be better ways to accomplish that, but this one works for me)
 
 **13.** Compile:
 
