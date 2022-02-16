@@ -2,6 +2,6 @@
     "defaults": {
         "run-as": "package"
     },
-    "username": "sc-open-vm-tools",
-    "join-groupname": "system"
+    "username": "open-vm-tools",
+    "join-groupname": "wheel"
 }
