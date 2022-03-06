@@ -10,7 +10,7 @@ MAINTAINER = RodmanWang
 DESCRIPTION = open-vm-tools is a set of services and modules that enable several features in VMware products for better management of, and seamless user interactions with, guests.
 RELOAD_UI = yes
 DISPLAY_NAME = VMware Tools
-CHANGELOG = "SPK Open-vm-tools | 23 SEP 2021 | Build 18557794"
+CHANGELOG = "SPK Open-vm-tools | 5 Mar 2022 | Build 19345655"
 
 HOMEPAGE = https://github.com/vmware/open-vm-tools
 LICENSE  = GPLv2/LGPLv2.1
