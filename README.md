@@ -60,7 +60,7 @@ If you want to compile `open-vm-tools` for `Synology DSM` by yourself, do the fo
 
 ~~`cd ~/Downloads`~~
 
-~~`wget https://github.com/vmware/open-vm-tools/releases/download/stable-11.2.5/open-vm-tools-11.2.5-17337674.tar.gz`~~
+~~`wget https://github.com/vmware/open-vm-tools/releases/download/stable-12.0.5/open-vm-tools-12.0.5-19716617.tar.gz`~~
 
 **2.** Create a temporary working directory...
 
