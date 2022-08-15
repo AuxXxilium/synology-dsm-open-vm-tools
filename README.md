@@ -144,15 +144,15 @@ add sponge
 
 Sidenote: Other common architectures could be:
 
-`arch-bromolow-6.2` or `arch-bromolow-7.0`
+`arch-bromolow-7.0`
 
 or
 
-`arch-broadwell-6.2` or `arch-broadwell-7.0`
+`arch-broadwell-7.0`
 
 or
 
-`arch-x64-6.2`
+`arch-x64-7.0`
 
 Now quit the docker building environment:
 
