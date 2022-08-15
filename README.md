@@ -54,27 +54,27 @@ The release builds provided here were compiled by using an `Ubuntu Desktop 20.04
 
 If you want to compile `open-vm-tools` for `Synology DSM` by yourself, do the following on a `Ubuntu/Debian` (or similiar) system, according to the following example (`open-vm-tools 11.5.2` and `apollolake/DSM 6.2` architecture):
 
-~~**1.** Download the desired official [open-vm-tools release](https://github.com/vmware/open-vm-tools/releases/):
+~~**1.** Download the desired official [open-vm-tools release](https://github.com/vmware/open-vm-tools/releases/):~~
 
-~~`cd ~/Downloads`
+~~`cd ~/Downloads`~~
 
-~~`wget https://github.com/vmware/open-vm-tools/releases/download/stable-11.2.5/open-vm-tools-11.2.5-17337674.tar.gz`
+~~`wget https://github.com/vmware/open-vm-tools/releases/download/stable-11.2.5/open-vm-tools-11.2.5-17337674.tar.gz`~~
 
 **2.** Create a temporary working directory...
 
 `mkdir -p ~/tmp/`
 
-~~...and push the following three checksums of the downloaded package into a `.txt`  file (which we will use later)  by executing:
+~~...and push the following three checksums of the downloaded package into a `.txt`  file (which we will use later)  by executing:~~
 
-~~`shasum -a 1 ~/Downloads/open-vm-tools-11.2.5-17337674.tar.gz >> ~/tmp/checksums.txt`
+~~`shasum -a 1 ~/Downloads/open-vm-tools-11.2.5-17337674.tar.gz >> ~/tmp/checksums.txt`~~
 
-~~`shasum -a 256 ~/Downloads/open-vm-tools-11.2.5-17337674.tar.gz >> ~/tmp/checksums.txt`
+~~`shasum -a 256 ~/Downloads/open-vm-tools-11.2.5-17337674.tar.gz >> ~/tmp/checksums.txt`~~
 
-~~`md5sum ~/Downloads/open-vm-tools-11.2.5-17337674.tar.gz >> ~/tmp/checksums.txt`
+~~`md5sum ~/Downloads/open-vm-tools-11.2.5-17337674.tar.gz >> ~/tmp/checksums.txt`~~
 
-~~Delete the `.tar.gz`-file:
+~~Delete the `.tar.gz`-file:~~
 
-~~`rm -rf ~/Downloads/open-vm-tools-11.2.5-17337674.tar.gz`
+~~`rm -rf ~/Downloads/open-vm-tools-11.2.5-17337674.tar.gz`~~
 
 **3.** Install the following packages:
 
@@ -93,23 +93,23 @@ If you want to compile `open-vm-tools` for `Synology DSM` by yourself, do the fo
 
 `git clone https://github.com/tbc0309/synology-dsm-open-vm-tools.git ~/tmp/open-vm-tools`
 
-~~**7.** Edit the following file which holds the according checksum files and replace all values with the previously generated checksums from `~/tmp/checksums.txt`:
+~~**7.** Edit the following file which holds the according checksum files and replace all values with the previously generated checksums from `~/tmp/checksums.txt`:~~
 
-~~`nano ~/tmp/open-vm-tools/cross/open-vm-tools/digests`
+~~`nano ~/tmp/open-vm-tools/cross/open-vm-tools/digests`~~
 
-~~Save the file and quit the editor.
+~~Save the file and quit the editor.~~
 
-~~**8.** Edit the following file and customize the values for the variables `PKG_VERS` and `PKG_BUILD` according to the `open-vm-tools` version you want to compile:
+~~**8.** Edit the following file and customize the values for the variables `PKG_VERS` and `PKG_BUILD` according to the `open-vm-tools` version you want to compile:~~
 
-~~`nano ~/tmp/open-vm-tools/cross/open-vm-tools/Makefile`
+~~`nano ~/tmp/open-vm-tools/cross/open-vm-tools/Makefile`~~
 
-~~Save the file and quit the editor.
+~~Save the file and quit the editor.~~
 
-~~**9.** Edit the following file and customize the value for the variable `SPK_VERS` according to the `.spk`-package version you want to generate and, if you want (optional), also for the variables `MAINTAINER` and `CHANGELOG`:
+~~**9.** Edit the following file and customize the value for the variable `SPK_VERS` according to the `.spk`-package version you want to generate and, if you want (optional), also for the variables `MAINTAINER` and `CHANGELOG`:~~
 
-~~`nano ~/tmp/open-vm-tools/spk/open-vm-tools/Makefile`
+~~`nano ~/tmp/open-vm-tools/spk/open-vm-tools/Makefile`~~
 
-~~Save the file and quit the editor.
+~~Save the file and quit the editor.~~
 
 **10.** Copy the `open-vm-tools` build files into the original "SynoCommunity" `spksrc` repository:
 
@@ -130,7 +130,7 @@ add sponge
 ~~The official synocommunity/spksrc docker container is missing the binary sponge. You need to install that for the build to finish:
 `apt update`
 `apt install moreutils`
-(there might be better ways to accomplish that, but this one works for me)
+(there might be better ways to accomplish that, but this one works for me)~~
 
 add sponge
 
