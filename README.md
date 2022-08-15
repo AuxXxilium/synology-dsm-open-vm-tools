@@ -68,15 +68,15 @@ If you want to compile `open-vm-tools` for `Synology DSM` by yourself, do the fo
 
 ~~...and push the following three checksums of the downloaded package into a `.txt`  file (which we will use later)  by executing:~~
 
-~~`shasum -a 1 ~/Downloads/open-vm-tools-11.2.5-17337674.tar.gz >> ~/tmp/checksums.txt`~~
+~~`shasum -a 1 ~/Downloads/open-vm-tools-12.0.5-19716617.tar.gz >> ~/tmp/checksums.txt`~~
 
-~~`shasum -a 256 ~/Downloads/open-vm-tools-11.2.5-17337674.tar.gz >> ~/tmp/checksums.txt`~~
+~~`shasum -a 256 ~/Downloads/open-vm-tools-12.0.5-19716617.tar.gz >> ~/tmp/checksums.txt`~~
 
-~~`md5sum ~/Downloads/open-vm-tools-11.2.5-17337674.tar.gz >> ~/tmp/checksums.txt`~~
+~~`md5sum ~/Downloads/open-vm-tools-12.0.5-19716617.tar.gz >> ~/tmp/checksums.txt`~~
 
 ~~Delete the `.tar.gz`-file:~~
 
-~~`rm -rf ~/Downloads/open-vm-tools-11.2.5-17337674.tar.gz`~~
+~~`rm -rf ~/Downloads/open-vm-tools-12.0.5-19716617.tar.gz`~~
 
 **3.** Install the following packages:
 
