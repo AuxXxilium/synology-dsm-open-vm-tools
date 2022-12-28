@@ -7,12 +7,11 @@ unset DOCKER_HOST
 rm -rf ~/tmp/
 mkdir -p ~/tmp/
 git clone https://github.com/SynoCommunity/spksrc ~/tmp/spksrc
-sudo docker pull ghcr.io/synocommunity/spksrc
+docker pull ghcr.io/synocommunity/spksrc
 git clone https://github.com/AuxXxilium/synology-dsm-open-vm-tools.git ~/tmp/open-vm-tools
-sudo cp -r ~/tmp/open-vm-tools/* ~/tmp/spksrc/
-sudo cp -r /usr/bin/sponge ~/tmp/spksrc/
-screen -AmdS docker dockerd
-sudo docker run -it -v ~/tmp/spksrc:/spksrc ghcr.io/synocommunity/spksrc /bin/bash
+cp -r ~/tmp/open-vm-tools/* ~/tmp/spksrc/
+cp -r /usr/bin/sponge ~/tmp/spksrc/
+docker run -it -v ~/tmp/spksrc:/spksrc ghcr.io/synocommunity/spksrc /bin/bash
 make setup
 cp -r /spksrc/sponge /usr/bin/
 cd /spksrc/spk/open-vm-tools-12/
