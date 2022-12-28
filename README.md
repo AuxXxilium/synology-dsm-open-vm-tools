@@ -1,7 +1,5 @@
 **[English](README.md) |**
 
-From：Aigor https://xpenology.com/forum/topic/58384-almost-functional-open-vmtools-for-ds3622xs/
-
 # VMware Tools for Synology DSM
 
 This is a port of the [open-vm-tools](https://github.com/vmware/open-vm-tools) implementation of VMware Tools to the [Synology DSM](https://www.synology.com/en-global/dsm) platform.
