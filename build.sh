@@ -11,16 +11,6 @@ docker pull ghcr.io/synocommunity/spksrc
 git clone https://github.com/AuxXxilium/synology-dsm-open-vm-tools.git ~/tmp/open-vm-tools
 cp -r ~/tmp/open-vm-tools/* ~/tmp/spksrc/
 cp -r /usr/bin/sponge ~/tmp/spksrc/
-docker run -it -v ~/tmp/spksrc:/spksrc ghcr.io/synocommunity/spksrc /bin/bash
-make setup
-cp -r /spksrc/sponge /usr/bin/
-cd /spksrc/spk/open-vm-tools-12/
-make arch-apollolake-7.1
-make arch-broadwell-7.1
-make arch-broadwellnk-7.1
-make arch-denverton-7.1
-make arch-geminilake-7.1
-make arch-r1000-7.1
-make arch-v1000-7.1
-exit
+cp -f docker.sh ~/tmp/spksrc/
+docker run -it -v ~/tmp/spksrc:/spksrc ghcr.io/synocommunity/spksrc docker.sh
 cp -f ~/tmp/spksrc/packages/*.spk /tmp
