@@ -91,7 +91,7 @@ If you want to compile `open-vm-tools` for `Synology DSM` by yourself, do the fo
 
 **6.** Clone the `open-vm-tools` build files:
 
-`git clone https://github.com/tbc0309/synology-dsm-open-vm-tools.git ~/tmp/open-vm-tools`
+`git clone https://github.com/AuxXxilium/synology-dsm-open-vm-tools.git ~/tmp/open-vm-tools`
 
 ~~**7.** Edit the following file which holds the according checksum files and replace all values with the previously generated checksums from `~/tmp/checksums.txt`:~~
 
