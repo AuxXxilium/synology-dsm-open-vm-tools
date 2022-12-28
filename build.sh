@@ -12,5 +12,5 @@ git clone https://github.com/AuxXxilium/synology-dsm-open-vm-tools.git ~/tmp/ope
 cp -r ~/tmp/open-vm-tools/* ~/tmp/spksrc/
 cp -r /usr/bin/sponge ~/tmp/spksrc/
 cp -f docker.sh ~/tmp/spksrc/
-docker run -it -v ~/tmp/spksrc:/spksrc ghcr.io/synocommunity/spksrc docker.sh
+docker run -it -v ~/tmp/spksrc:/spksrc ghcr.io/synocommunity/spksrc /spksrc/docker.sh
 cp -f ~/tmp/spksrc/packages/*.spk /tmp
