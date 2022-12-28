@@ -1,0 +1,59 @@
+name: Build image
+
+on:
+  release:
+    types: [published]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      # Install  dependencies
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libelf-dev moreutils
+
+      # Build incremental
+      - name: Build image
+        id: build
+        run: |
+              mkdir -p ~/tmp/
+              git clone https://github.com/SynoCommunity/spksrc ~/tmp/spksrc
+              sudo docker pull ghcr.io/synocommunity/spksrc
+              git clone https://github.com/AuxXxilium/synology-dsm-open-vm-tools.git ~/tmp/open-vm-tools
+              sudo cp -r ~/tmp/open-vm-tools/* ~/tmp/spksrc/
+              sudo cp -r /usr/bin/sponge ~/tmp/spksrc/
+              sudo docker run -i -v ~/tmp/spksrc:/spksrc ghcr.io/synocommunity/spksrc /bin/bash
+              make setup
+              cp -r /spksrc/sponge /usr/bin/
+              cd /spksrc/spk/open-vm-tools-12/
+              make arch-apollolake-7.1
+              make arch-broadwell-7.1
+              make arch-broadwellnk-7.1
+              make arch-denverton-7.1
+              make arch-geminilake-7.1
+              make arch-r1000-7.1
+              make arch-v1000-7.1
+              exit
+
+      # Upload artifact
+      - name: Upload
+        uses: actions/upload-artifact@v3
+        with:
+          name: Apps
+          path: |
+            ~/tmp/spksrc/packages/*.spk
+          retention-days: 5
+
+      # Publish a release if is a tag
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: |
+            ~/tmp/spksrc/packages/*.spk
