@@ -3,6 +3,7 @@
 sudo apt-get update
 sudo apt-get install -y libelf-dev docker.io moreutils
 
+unset DOCKER_HOST
 rm -rf ~/tmp/
 mkdir -p ~/tmp/
 git clone https://github.com/SynoCommunity/spksrc ~/tmp/spksrc
