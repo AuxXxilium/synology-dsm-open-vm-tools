@@ -16,20 +16,23 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y libelf-dev moreutils
+          sudo apt-get install -y libelf-dev moreutils docker.io
 
       # Build incremental
       - name: Build image
         id: build
         run: |
+              unset DOCKER_HOST
+              rm -rf ~/tmp/
               mkdir -p ~/tmp/
               git clone https://github.com/SynoCommunity/spksrc ~/tmp/spksrc
-              sudo docker pull ghcr.io/synocommunity/spksrc
+              docker pull ghcr.io/synocommunity/spksrc
               git clone https://github.com/AuxXxilium/synology-dsm-open-vm-tools.git ~/tmp/open-vm-tools
-              sudo cp -r ~/tmp/open-vm-tools/* ~/tmp/spksrc/
-              sudo cp -r /usr/bin/sponge ~/tmp/spksrc/
-              sudo docker run -i -v ~/tmp/spksrc:/spksrc ghcr.io/synocommunity/spksrc /bin/bash
-              make setup
+              cp -r ~/tmp/open-vm-tools/* ~/tmp/spksrc/
+              cp -r /usr/bin/sponge ~/tmp/spksrc/
+              cp -f docker.sh ~/tmp/spksrc/
+              docker run -it -v ~/tmp/spksrc:/spksrc ghcr.io/synocommunity/spksrc /spksrc/docker.sh
+              cp -f ~/tmp/spksrc/packages/*.spk /tmp
               cp -r /spksrc/sponge /usr/bin/
               cd /spksrc/spk/open-vm-tools-12/
               make arch-apollolake-7.1
