@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 sudo apt-get update
 sudo apt-get install -y libelf-dev docker.io moreutils

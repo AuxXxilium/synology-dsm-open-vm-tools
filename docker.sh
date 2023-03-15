@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 make setup
 cp -r /spksrc/sponge /usr/bin/
