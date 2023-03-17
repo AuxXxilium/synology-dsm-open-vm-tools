@@ -1,4 +1,4 @@
-﻿-*- Coding: utf-8 ; -*- // for emacs
+-*- Coding: utf-8 ; -*- // for emacs
 [some latin, devanagari, and cyrillic text]
 raj  Rajasthani  राजेस्थानी
      Konkani     कोंकणी
