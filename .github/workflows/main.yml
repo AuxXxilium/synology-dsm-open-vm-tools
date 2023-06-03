@@ -16,7 +16,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y libelf-dev moreutils
+          sudo apt-get install -y libelf-dev moreutils glibc
 
       # Build incremental
       - name: Build image
