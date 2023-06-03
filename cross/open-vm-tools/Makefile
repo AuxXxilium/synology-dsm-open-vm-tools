@@ -1,12 +1,12 @@
 PKG_NAME = open-vm-tools
-PKG_VERS = 12.0.0
-PKG_BUILD = 19345655
+PKG_VERS = 12.2.0
+PKG_BUILD = 21223074
 PKG_EXT = tar.gz
 PKG_DIST_NAME = $(PKG_NAME)-$(PKG_VERS)-$(PKG_BUILD).$(PKG_EXT)
 PKG_DIST_SITE = https://github.com/vmware/open-vm-tools/releases/download/stable-$(PKG_VERS)
 PKG_DIR = $(PKG_NAME)-$(PKG_VERS)-$(PKG_BUILD)
 
-DEPENDS = cross/libmspack cross/glib cross/openssl cross/fuse cross/libtirpc cross/procps-ng cross/icu
+DEPENDS = cross/libmspack cross/glib cross/protobuf cross/openssl cross/fuse cross/curl cross/libtirpc cross/procps-ng cross/icu
 
 HOMEPAGE = https://github.com/vmware/open-vm-tools
 COMMENT  = VMware open-vm-tools project
@@ -27,6 +27,8 @@ CONFIGURE_ARGS += --with-tirpc
 CONFIGURE_ARGS += --without-pam
 CONFIGURE_ARGS += --without-xmlsec1
 CONFIGURE_ARGS += --without-icu
+CONFIGURE_ARGS += --enable-containerinfo=no
+CONFIGURE_ARGS += --enable-servicediscovery
 
 include ../../mk/spksrc.cross-cc.mk
 

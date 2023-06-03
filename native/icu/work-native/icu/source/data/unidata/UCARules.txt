@@ -1,4 +1,4 @@
-# UCA_Rules_SHORT.txt
+﻿# UCA_Rules_SHORT.txt
 # Date: 2019-04-01, 20:17:28 GMT
 # © 2019 Unicode®, Inc.
 # Unicode and the Unicode Logo are registered trademarks of Unicode, Inc. in the U.S. and other countries.
