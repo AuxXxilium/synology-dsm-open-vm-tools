@@ -1,7 +1,7 @@
 #!/bin/bash
 
 sudo apt-get update
-sudo apt-get install -y libelf-dev docker.io moreutils
+sudo apt-get install -y libelf-dev moreutils
 
 unset DOCKER_HOST
 rm -rf ~/tmp/
