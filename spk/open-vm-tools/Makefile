@@ -7,7 +7,7 @@ BETA = 1
 DEPENDS = cross/$(SPK_NAME)
 UNSUPPORTED_ARCHS = $(PPC_ARCHS) $(ARMv5_ARCHS) $(i686_ARCHS) $(ARMv7L_ARCHS)
 
-MAINTAINER = zsanjin
+MAINTAINER = AuxXxilium
 DESCRIPTION = open-vm-tools is a set of services and modules that enable several features in VMware products for better management of, and seamless user interactions with, guests.
 RELOAD_UI = yes
 DISPLAY_NAME = VMware Tools
