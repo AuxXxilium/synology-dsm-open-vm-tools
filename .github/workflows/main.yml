@@ -34,7 +34,7 @@ jobs:
               docker run -i -v ~/tmp/spksrc:/spksrc ghcr.io/synocommunity/spksrc /spksrc/docker.sh
               cp -f ~/tmp/spksrc/packages/*.spk /tmp
               cp -r /spksrc/sponge /usr/bin/
-              cd /spksrc/spk/open-vm-tools-12/
+              cd /spksrc/spk/open-vm-tools/
               make arch-apollolake-7.2
               make arch-broadwell-7.2
               make arch-broadwellnk-7.2
