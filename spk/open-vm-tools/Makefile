@@ -1,5 +1,5 @@
 SPK_NAME = open-vm-tools
-SPK_VERS = 12.2.0
+SPK_VERS = 12.2.5
 SPK_REV = 1
 SPK_ICON = src/open-vm-tools.png
 BETA = 1
@@ -11,7 +11,7 @@ MAINTAINER = AuxXxilium
 DESCRIPTION = open-vm-tools is a set of services and modules that enable several features in VMware products for better management of, and seamless user interactions with, guests.
 RELOAD_UI = yes
 DISPLAY_NAME = VMware Tools
-CHANGELOG = "SPK Open-vm-tools | 08 Mar 2023 | Build 21223074"
+CHANGELOG = "SPK Open-vm-tools | 14 Jun 2023 | Build 21855600"
 
 HOMEPAGE = https://github.com/vmware/open-vm-tools
 LICENSE  = GPLv2/LGPLv2.1
