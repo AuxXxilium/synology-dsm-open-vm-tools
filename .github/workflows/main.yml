@@ -35,13 +35,13 @@ jobs:
               cp -f ~/tmp/spksrc/packages/*.spk /tmp
               cp -r /spksrc/sponge /usr/bin/
               cd /spksrc/spk/open-vm-tools/
-              make arch-apollolake-7.2
-              make arch-broadwell-7.2
-              make arch-broadwellnk-7.2
-              make arch-denverton-7.2
-              make arch-geminilake-7.2
-              make arch-r1000-7.2
-              make arch-v1000-7.2
+              make arch-apollolake-7.1
+              make arch-broadwell-7.1
+              make arch-broadwellnk-7.1
+              make arch-denverton-7.1
+              make arch-geminilake-7.1
+              make arch-r1000-7.1
+              make arch-v1000-7.1
               exit
 
       # Upload artifact
