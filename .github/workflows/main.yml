@@ -16,7 +16,8 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y libelf-dev moreutils glibc-source libc-dev-bin build-essential docker.io
+          sudo apt-get install -y libelf-dev moreutils glibc-source libc-dev-bin build-essential
+          
 
       # Build incremental
       - name: Build image
