@@ -215,10 +215,10 @@ sbin/gencmn
 sbin/gennorm2
 sbin/gensprep
 sbin/icupkg
-share/icu/73.1/LICENSE
-share/icu/73.1/config/mh-linux
-share/icu/73.1/install-sh
-share/icu/73.1/mkinstalldirs
+share/icu/65.1/LICENSE
+share/icu/65.1/config/mh-linux
+share/icu/65.1/install-sh
+share/icu/65.1/mkinstalldirs
 share/man/man1/derb.1
 share/man/man1/genbrk.1
 share/man/man1/gencfu.1

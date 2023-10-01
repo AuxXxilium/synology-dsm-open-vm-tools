@@ -1,6 +1,6 @@
 PKG_NAME = open-vm-tools
-PKG_VERS = 12.2.5
-PKG_BUILD = 21855600
+PKG_VERS = 12.3.0
+PKG_BUILD = 22234872
 PKG_EXT = tar.gz
 PKG_DIST_NAME = $(PKG_NAME)-$(PKG_VERS)-$(PKG_BUILD).$(PKG_EXT)
 PKG_DIST_SITE = https://github.com/vmware/open-vm-tools/releases/download/stable-$(PKG_VERS)
@@ -29,7 +29,6 @@ CONFIGURE_ARGS += --without-xmlsec1
 CONFIGURE_ARGS += --without-icu
 CONFIGURE_ARGS += --enable-containerinfo=no
 CONFIGURE_ARGS += --enable-servicediscovery
-
 include ../../mk/spksrc.cross-cc.mk
 
 .PHONY: vmtools_pre_configure
