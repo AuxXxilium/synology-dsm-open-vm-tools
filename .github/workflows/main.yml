@@ -17,7 +17,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y libelf-dev moreutils glibc-source libc-dev-bin build-essential
-          
+
 
       # Build incremental
       - name: Build image
@@ -39,8 +39,11 @@ jobs:
               make arch-apollolake-7.1
               make arch-broadwell-7.1
               make arch-broadwellnk-7.1
+              make arch-broadwellnkv2-7.1
+              make arch-broadwellntbap-7.1
               make arch-denverton-7.1
               make arch-geminilake-7.1
+              make arch-purley-7.1
               make arch-r1000-7.1
               make arch-v1000-7.1
               exit
