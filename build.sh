@@ -9,8 +9,8 @@ mkdir -p ~/tmp/
 git clone https://github.com/SynoCommunity/spksrc ~/tmp/spksrc
 docker pull ghcr.io/synocommunity/spksrc
 git clone https://github.com/AuxXxilium/synology-dsm-open-vm-tools.git ~/tmp/open-vm-tools
-cp -r ~/tmp/open-vm-tools/* ~/tmp/spksrc/
-cp -r /usr/bin/sponge ~/tmp/spksrc/
+cp -rf ~/tmp/open-vm-tools/* ~/tmp/spksrc/
+cp -rf /usr/bin/sponge ~/tmp/spksrc/
 cp -f docker.sh ~/tmp/spksrc/
 docker run -it -v ~/tmp/spksrc:/spksrc ghcr.io/synocommunity/spksrc /spksrc/docker.sh
 cp -f ~/tmp/spksrc/packages/*.spk /home/auxxxilium
