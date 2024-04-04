@@ -7,11 +7,11 @@ BETA = 1
 DEPENDS = cross/$(SPK_NAME)
 UNSUPPORTED_ARCHS = $(PPC_ARCHS) $(ARMv5_ARCHS) $(i686_ARCHS) $(ARMv7L_ARCHS)
 
-MAINTAINER = AuxXxilium
+MAINTAINER = zsanjin
 DESCRIPTION = open-vm-tools is a set of services and modules that enable several features in VMware products for better management of, and seamless user interactions with, guests.
 RELOAD_UI = yes
 DISPLAY_NAME = VMware Tools
-CHANGELOG = "SPK Open-vm-tools | 22 Mar 2024 | Build 23259341"
+CHANGELOG = "SPK Open-vm-tools | 23 Mar 2024 | Build 23259341"
 
 HOMEPAGE = https://github.com/vmware/open-vm-tools
 LICENSE  = GPLv2/LGPLv2.1
