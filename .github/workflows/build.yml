@@ -15,37 +15,26 @@ jobs:
         include:
           - version: 7.1 
             platform: apollolake
-            parm: "4.4.180"
           - version: 7.1
             platform: broadwell
-            parm: "4.4.180"
           - version: 7.1 
             platform: broadwellnk
-            parm: "4.4.180"
           - version: 7.1 
             platform: broadwellnkv2
-            parm: "4.4.180"
           - version: 7.1
             platform: denverton
-            parm: "4.4.180"
           - version: 7.1
             platform: epyc7002
-            parm: "5.10.55"
           - version: 7.1 
             platform: geminilake
-            parm: "4.4.180"
           - version: 7.1 
             platform: purley
-            parm: "4.4.180"
           - version: 7.1
             platform: r1000
-            parm: "4.4.180"
           - version: 7.1
             platform: v1000
-            parm: "4.4.180"
           #- version: 7.1
           #  platform: kvmx64
-          #  parm: "4.4.180"
 
     runs-on: ubuntu-latest
 
@@ -57,7 +46,10 @@ jobs:
       run: |
         git config --global user.email "info@auxxxilium.tech"
         git config --global user.name "AuxXxilium"
-        sudo timedatectl set-timezone "Europe/Berlin" 
+        sudo timedatectl set-timezone "Europe/Berlin"
+
+        sudo apt update
+        sudo apt install -y docker.io moreutils
 
     - name: Checkout Synology Community Source and Docker Image
       run: |
