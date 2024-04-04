@@ -51,20 +51,6 @@ jobs:
         sudo apt update
         sudo apt install -y docker.io moreutils
 
-    - name: Checkout Synology Community Source and Docker Image
-      run: |
-        docker pull ghcr.io/synocommunity/spksrc
-        git clone --depth=1 https://github.com/SynoCommunity/spksrc.git
-        cp -rf cross/* spksrc/cross
-        cp -rf native/* spksrc/native
-        cp -rf spk/* spksrc/spk
-
-    - name: Build Package
-      run: |
-        ROOT_PATH="${{ github.workspace }}"
-        MAKE_ARCH="arch-${{ matrix.platform }}-${{ matrix.version }}"
-        docker run -v ${ROOT_PATH}/spksrc:/spksrc -w /spksrc/spk/open-vm-tools ghcr.io/synocommunity/spksrc make ${MAKE_ARCH}
-
     - name: Calculate Version
       run: |
         # Calculate Version
@@ -85,6 +71,20 @@ jobs:
           echo "Version: ${VERSION}"
           echo "VERSION=${VERSION}" >> $GITHUB_ENV
         fi
+
+    - name: Checkout Synology Community Source and Docker Image
+      run: |
+        docker pull ghcr.io/synocommunity/spksrc
+        git clone --depth=1 https://github.com/SynoCommunity/spksrc.git
+        cp -rf cross/* spksrc/cross
+        cp -rf native/* spksrc/native
+        cp -rf spk/* spksrc/spk
+
+    - name: Build Package
+      run: |
+        ROOT_PATH="${{ github.workspace }}"
+        MAKE_ARCH="arch-${{ matrix.platform }}-${{ matrix.version }}"
+        docker run -v ${ROOT_PATH}/spksrc:/spksrc -w /spksrc/spk/open-vm-tools ghcr.io/synocommunity/spksrc make ${MAKE_ARCH}
 
     - name: Upload to Artifacts
       if: success() && env.VERSION == ''
