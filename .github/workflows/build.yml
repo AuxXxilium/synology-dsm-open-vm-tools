@@ -49,7 +49,7 @@ jobs:
         sudo timedatectl set-timezone "Europe/Berlin"
 
         sudo apt update
-        sudo apt install -y docker.io moreutils
+        sudo apt install -y moreutils
 
     - name: Calculate Version
       run: |
