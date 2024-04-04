@@ -47,40 +47,6 @@ jobs:
           #  platform: kvmx64
           #  parm: "4.4.180"
 
-          - version: 7.2 
-            platform: apollolake
-            parm: "4.4.302"
-          - version: 7.2
-            platform: broadwell
-            parm: "4.4.302"
-          - version: 7.2 
-            platform: broadwellnk
-            parm: "4.4.302"
-          - version: 7.2 
-            platform: broadwellnkv2
-            parm: "4.4.302"
-          - version: 7.2
-            platform: denverton
-            parm: "4.4.302"
-          - version: 7.2
-            platform: epyc7002
-            parm: "5.10.55"
-          - version: 7.2 
-            platform: geminilake
-            parm: "4.4.302"
-          - version: 7.2 
-            platform: purley
-            parm: "4.4.302"
-          - version: 7.2
-            platform: r1000
-            parm: "4.4.302"
-          - version: 7.2
-            platform: v1000
-            parm: "4.4.302"
-          #- version: 7.2
-          #  platform: kvmx64
-          #  parm: "4.4.302"
-
     runs-on: ubuntu-latest
 
     steps:
@@ -125,8 +91,6 @@ jobs:
         if [ -n "${VERSION}" ]; then
           # Modify Source File
           echo "Version: ${VERSION}"
-          echo "${VERSION}" >VERSION
-          echo "${VERSION}" >"./output/VERSION"
           echo "VERSION=${VERSION}" >> $GITHUB_ENV
         fi
 
