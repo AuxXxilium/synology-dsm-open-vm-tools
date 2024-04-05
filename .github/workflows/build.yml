@@ -3,17 +3,40 @@ name: build
 on:
   workflow_dispatch:
     inputs:
-      tag:
-        description: "tag"
+      version:
+        description: "format %y.%-m.$i or auto"
         required: false
         type: string
 
 jobs:
   build:
-    runs-on: ubuntu-latest
     strategy:
       matrix:
-        target: [x64-7.1, aarch64-7.1]
+        include:
+          - version: 7.1 
+            platform: apollolake
+          - version: 7.1
+            platform: broadwell
+          - version: 7.1 
+            platform: broadwellnk
+          - version: 7.1 
+            platform: broadwellnkv2
+          - version: 7.1
+            platform: denverton
+          - version: 7.1
+            platform: epyc7002
+          - version: 7.1 
+            platform: geminilake
+          - version: 7.1 
+            platform: purley
+          - version: 7.1
+            platform: r1000
+          - version: 7.1
+            platform: v1000
+          #- version: 7.1
+          #  platform: kvmx64
+
+    runs-on: ubuntu-latest
 
     steps:
     - name: Checkout
@@ -23,32 +46,59 @@ jobs:
       run: |
         git config --global user.email "info@auxxxilium.tech"
         git config --global user.name "AuxXxilium"
-        sudo timedatectl set-timezone "Europe/Berlin" 
+        sudo timedatectl set-timezone "Europe/Berlin"
 
-    - name: Checkout SynoCommunity Source and Docker Image
+        sudo apt update
+        sudo apt install -y moreutils
+
+    - name: Calculate Version
+      run: |
+        # Calculate Version
+        VERSION=""
+        if [ -n "${{ inputs.version }}" ]; then
+          VERSION="${{ inputs.version }}"
+        else
+          LATEST_TAG="`curl -skL "https://api.github.com/repos/${{ github.repository }}/releases/latest" | jq -r ".tag_name" 2>/dev/null`"
+          if [[ -n "${LATEST_TAG}" && "`echo ${LATEST_TAG} | cut -d '.' -f 1,2`" = "`date +'%y.%-m.%-d'`" ]]; then  # format %y.%-m.$i
+            VERSION="`echo ${LATEST_TAG} | awk -F '.' '{$3=$3+1}1' OFS='.'`"
+          else
+            VERSION="`date +'%y.%-m.%-d'`"
+          fi
+        fi
+
+        if [ -n "${VERSION}" ]; then
+          # Modify Source File
+          echo "Version: ${VERSION}"
+          echo "VERSION=${VERSION}" >> $GITHUB_ENV
+        fi
+
+    - name: Checkout Synology Community Source and Docker Image
       run: |
         docker pull ghcr.io/synocommunity/spksrc
         git clone --depth=1 https://github.com/SynoCommunity/spksrc.git
-        cp -rf src/* spksrc
+        cp -rf cross/* spksrc/cross
+        cp -rf native/* spksrc/native
+        cp -rf spk/* spksrc/spk
 
     - name: Build Package
       run: |
         ROOT_PATH="${{ github.workspace }}"
-        MAKE_ARCH="arch-${{ matrix.target }}"
+        MAKE_ARCH="arch-${{ matrix.platform }}-${{ matrix.version }}"
         docker run -v ${ROOT_PATH}/spksrc:/spksrc -w /spksrc/spk/open-vm-tools ghcr.io/synocommunity/spksrc make ${MAKE_ARCH}
 
     - name: Upload to Artifacts
-      if: inputs.tag == ''
+      if: success() && env.VERSION == ''
       uses: actions/upload-artifact@v4
       with:
-        name: ${{ matrix.target }}
+        name: ${{ matrix.platform }}-${{ matrix.version }}
         path: |
           spksrc/packages/*.spk
         retention-days: 5
 
     - name: Release
-      if: inputs.tag != ''
-      uses: softprops/action-gh-release@v2
+      if: success() && env.VERSION != ''
+      uses: ncipollo/release-action@v1
       with:
-        tag_name: ${{ inputs.tag }}
-        files: spksrc/packages/*.spk
+        tag: ${{ env.VERSION }}
+        allowUpdates: true
+        artifacts: spksrc/packages/*.spk
