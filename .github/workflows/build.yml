@@ -55,13 +55,13 @@ jobs:
 
     - name: Release
       if: inputs.tag != ''
-      uses: softprops/action-gh-release@v2
-      body: |
-        ### DSM 7.0 / 7.1 / 7.2
-
-        - Perform code repair using SSH connection
-        
-        `sudo sed -i 's/package/root/g' /var/packages/open-vm-tools/conf/privilege`
+      uses: ncipollo/release-action@v1
       with:
-        tag_name: ${{ inputs.tag }}
-        files: spksrc/packages/*.spk
+        tag: ${{ inputs.tag }}
+        body: |
+          ### DSM 7.0 / 7.1 / 7.2
+
+          - Perform code repair using SSH connection
+          
+          `sudo sed -i 's/package/root/g' /var/packages/open-vm-tools/conf/privilege`
+        artifacts: spksrc/packages/*.spk
