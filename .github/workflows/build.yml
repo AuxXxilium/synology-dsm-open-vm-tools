@@ -58,6 +58,7 @@ jobs:
       uses: ncipollo/release-action@v1
       with:
         tag: ${{ inputs.tag }}
+        allowUpdates: true
         body: |
           ### DSM 7.0 / 7.1 / 7.2
 
