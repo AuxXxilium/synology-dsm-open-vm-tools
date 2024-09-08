@@ -1,12 +1,12 @@
 PKG_NAME = open-vm-tools
-PKG_VERS = 12.4.0
-PKG_BUILD = 23259341
+PKG_VERS = 12.4.5
+PKG_BUILD = 23787635
 PKG_EXT = tar.gz
 PKG_DIST_NAME = $(PKG_NAME)-$(PKG_VERS)-$(PKG_BUILD).$(PKG_EXT)
 PKG_DIST_SITE = https://github.com/vmware/open-vm-tools/releases/download/stable-$(PKG_VERS)
 PKG_DIR = $(PKG_NAME)-$(PKG_VERS)-$(PKG_BUILD)
 
-DEPENDS = cross/glib cross/curl cross/moreutils cross/protobuf cross/openssl cross/libmspack cross/fuse3 cross/libtirpc cross/procps-ng cross/icu cross/libiconv
+DEPENDS = cross/glib cross/curl cross/moreutils cross/protobuf cross/openssl cross/libmspack cross/fuse3 cross/libtirpc cross/procps-ng cross/libicu cross/libiconv
 
 HOMEPAGE = https://github.com/vmware/open-vm-tools
 COMMENT  = VMware open-vm-tools project

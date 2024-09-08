@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2023 AuxXxilium <https://github.com/AuxXxilium> and Ing <https://github.com/wjz304>
+# Copyright (C) 2023 AuxXxilium <https://github.com/AuxXxilium>
 #
 # This is free software, licensed under the MIT License.
 # See /LICENSE for more information.
@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        target: [x64-7.1, aarch64-7.1]
+        target: [x64-7.0]
 
     steps:
     - name: Checkout
@@ -55,13 +55,7 @@ jobs:
 
     - name: Release
       if: inputs.tag != ''
-      uses: ncipollo/release-action@v1
+      uses: softprops/action-gh-release@v2
       with:
-        tag: ${{ inputs.tag }}
-        body: |
-          ### DSM 7.0 / 7.1 / 7.2
-
-          - Perform code repair using SSH connection
-          
-          `sudo sed -i 's/package/root/g' /var/packages/open-vm-tools/conf/privilege`
-        artifacts: spksrc/packages/*.spk
+        tag_name: ${{ inputs.tag }}
+        files: spksrc/packages/*.spk
